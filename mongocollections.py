@@ -2,7 +2,8 @@ from pymongo import MongoClient
 
 class Database(object):
 
-    client = MongoClient("mongodb://localhost:27017/", serverSelectionTimeoutMS = 2000)
+    MONGODBPORT = "mongodb://localhost:27017/"
+    client = MongoClient(MONGODBPORT, serverSelectionTimeoutMS = 2000)
     db = client["test"]
 
     @staticmethod

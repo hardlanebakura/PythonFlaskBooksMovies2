@@ -21,7 +21,6 @@ bookcategories = ['rank', 'title', 'author', 'description', 'book_image', 'book_
 class Book:
 
     newid = itertools.count()
-    #def __init__(self, rank, title, author, description, image, review_link):
     def __init__(self, item):
         self.new_id = next(Book.newid)
         self.rank = item["rank"]
@@ -32,6 +31,8 @@ class Book:
         self.review_link = item["review_link"]
         self.list_name = item["list_name"]
         self.list_name_encoded = item["list_name_encoded"]
+        if "top_book_id" in item:
+            self.top_book_id = item["top_book_id"]
 
 
         if not(isinstance(self.rank, int)):
@@ -167,10 +168,10 @@ def getAllRankOneBestsellers():
     rankonebestsellers = []
     #this variable is needed in order to render the "TOP BOOKS" page
     counter = 0
-    for title in rankonetitles:
-        list1 = [Book(item) for item in Database.findAll("books1", {"rank":1,"title":title})]
+    #for title in rankonetitles:
+        #list1 = [Book(item) for item in Database.findAll("books1", {"rank":1,"title":title})]
         #list1[0].id = counter + 1
-        counter = counter + 1
+        #counter = counter + 1
         #rankonebestsellers.append(list1[0])
     return rankonebestsellers1
 
