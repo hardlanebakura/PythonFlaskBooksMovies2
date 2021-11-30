@@ -4,6 +4,8 @@ body {
   padding:0;
   box-sizing:border-box;
   font-family:"Roboto",sans-serif;
+    position: relative;
+    min-height: 100%;
 }
 
 .header1 {

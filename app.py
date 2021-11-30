@@ -6,16 +6,21 @@ app = Flask(__name__)
 
 app.config["SECRET_KEY"] = "secretkey"
 
+all_books = [i.__dict__ for i in all_books]
+listoftopmovies = [i.__dict__ for i in listoftopmovies]
+
 @app.route("/")
 def index():
     session["category"] = randomcategory_u
-    books = booksForOneGenre(randomcategory_u)
+    books = [i.__dict__ for i in booksForOneGenre(randomcategory_u)]
+    print(books)
     return render_template("index.html", books = books, randomcategory = randomcategory_u)
 
 @app.route("/topbooks")
 def topbooks():
     print(rankonebestsellers)
-    return render_template("topbooks.html", books = rankonebestsellers)
+    books = [i.__dict__ for i in rankonebestsellers]
+    return render_template("topbooks.html", books = books)
 
 @app.route("/topbooks/<int:id>")
 def topbook(id):
@@ -64,13 +69,13 @@ def categories():
         return redirect("/categories/{}".format(k))
     else:
         session["category"] = randomcategory_u
-        books = booksForOneGenre(randomcategory_u)
+        books = [i.__dict__ for i in booksForOneGenre(randomcategory_u)]
         return render_template("categories.html", all_books = all_books, books = books, books_genres = genres_u, randomcategory = randomcategory_u)
 
 @app.route("/categories/<int:categoryid>")
 def category(categoryid):
     chosencategory = session["category"]
-    books = booksForOneGenre(chosencategory)
+    books = [i.__dict__ for i in booksForOneGenre(chosencategory)]
     print(chosencategory)
     return render_template("category.html",  all_books = all_books, books = books, books_genres = genres_u, randomcategory = genres_u[categoryid])
 
@@ -83,14 +88,14 @@ def bookincategory(id):
 def popularwriters():
     return render_template("popularauthors.html", popularauthors = popularauthors)
 
-@app.route("/bookswordcloud")
+@app.route("/books/wordcloud")
 def bookswordcloud():
     return render_template("bookswordcloud.html")
 
 @app.route("/movies")
 def movies():
     session["genre"] = randomgenre
-    moviesinrandomgenre = getTopMoviesByGenre(randomgenre)[:40]
+    moviesinrandomgenre = [i.__dict__ for i in getTopMoviesByGenre(randomgenre)[:40]]
     return render_template("movies.html", movies = moviesinrandomgenre, randomgenre = randomgenre)
 
 @app.route("/genres", methods = ["GET", "POST"])
@@ -106,7 +111,6 @@ def genres():
         else:
             movies_genres = getAllGenres()
             session["category"] = randomcategory_u
-            books = booksForOneGenre(randomcategory_u)
             movies = getTopMoviesByGenre(randomgenre)
             return render_template("genres.html", all_books=all_books, movies = movies, books_genres=genres_u, movies_genres = movies_genres,
                                    randomgenre = randomgenre)
@@ -114,18 +118,17 @@ def genres():
 @app.route("/genres/<int:genreid>")
 def genre(genreid):
     chosencategory = session["genre"]
-    books = booksForOneGenre(chosencategory)
-    movies = getTopMoviesByGenre(chosencategory)
+    movies = [i.__dict__ for i in getTopMoviesByGenre(chosencategory)[:40]]
     return render_template("genre.html", all_movies = listoftopmovies, movies = movies, movies_genres = listofallgenres,
                            randomgenre = chosencategory)
 
-@app.route("/movieswordcloud")
+@app.route("/movies/wordcloud")
 def movieswordcloud():
     return render_template("movieswordcloud.html")
 
 @app.route("/movies/<int:movieid>")
 def movie(movieid):
-    movies = getTopMoviesByGenre(session["genre"])
+    movies = [i.__dict__ for i in getTopMoviesByGenre(session["genre"])[:40]]
     return render_template("movie.html", movie = movies[movieid-1])
 
 @app.route("/movies/stats")

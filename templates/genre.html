@@ -23,7 +23,7 @@
     <a href = "/genres">GENRES</a>
     </div>
     <div class = "genre">
-    <a href = "/movieswordcloud">WORDCLOUD</a>
+    <a href = "/movies/wordcloud">WORDCLOUD</a>
     </div>
 </div>
 
@@ -35,7 +35,7 @@
 <div class = "movie">
     <a href = "/movies/{{ movie.rank }}">
     <div class = "imagezoom">
-            <img src = "https://image.tmdb.org/t/p/original{{ movie.poster_path }}"> <br>
+            <img src = "https://image.tmdb.org/t/p/original{{ movie.image }}"> <br>
     </div>
     <div class = "movietitle">
     {{ movie.title }} <br>

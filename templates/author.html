@@ -8,6 +8,21 @@
 
 {% block body %}
 
+<div class = "booksmenu">
+    <div class = "category">
+    <a href = "/topbooks">TOP BOOKS</a>
+    </div>
+    <div class = "category">
+    <a href = "/categories">CATEGORIES</a>
+    </div>
+    <div class = "category">
+    <a href = "/popularauthors">POPULAR AUTHORS</a>
+    </div>
+    <div class = "category">
+    <a href = "/books/wordcloud">WORDCLOUD</a>
+    </div>
+</div>
+<div class = "categoriesselection"></div>
 <div class = "author">
 {{ books[0].author }} <br>
 </div>
@@ -15,17 +30,17 @@
 <div class = "book">
             <a href = "/books/{{ author }}/{{book.id }}">
             <div class = "imagezoom">
-            <img src = "{{ book.book_image }}"> <br>
+            <img src = "{{ book.image }}"> <br>
             </div>
             </a>
             <div class = "bookinfo">
             <div class = "booktitle">
             {{ book.title }} <br>
             </div>
-            {% if book.book_review_link %}
+            {% if book.review_link %}
                 <div class = "bookreviewlink">
-                    <a href = "{{ book.book_review_link }}">
-                        {{ book.book_review_link }}
+                    <a href = "{{ book.review_link }}">
+                        {{ book.review_link }}
                     </a>
                     <br>
                 </div>

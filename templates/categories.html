@@ -24,7 +24,7 @@
     <a href = "/popularauthors">POPULAR AUTHORS</a>
     </div>
     <div class = "category">
-    <a href = "/bookswordcloud">WORDCLOUD</a>
+    <a href = "/books/wordcloud">WORDCLOUD</a>
     </div>
 </div>
 
@@ -55,17 +55,17 @@
         <div class = "book">
             <a href = "/books/{{ book.rank }}">
             <div class = "imagezoom">
-            <img src = "{{ book.book_image }}"> <br>
+            <img src = "{{ book.image }}"> <br>
             </div>
             <div class = "bookinfo">
             <div class = "booktitle">
             {{ book.title }} <br>
             </div>
             {{ book.author }} <br>
-            {% if book.book_review_link %}
+            {% if book.review_link %}
                 <div class = "bookreviewlink">
-                    <a href = "{{ book.book_review_link }}">
-                        {{ book.book_review_link }}
+                    <a href = "{{ book.review_link }}">
+                        {{ book.review_link }}
                     </a>
                     <br>
                 </div>
