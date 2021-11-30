@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Books and Movies Page</title>
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = '/css/base.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="logoicon.png" sizes="76x76" href="{{ url_for('static', filename = '/images/logoicon.png') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename = '/images/logoicon.png') }}" type="image/x-icon" />
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+
+    <div class = "header1">
+        <div class = "header1menu">
+            <div class = "headeroption">
+                <a href = "/">
+                    BOOKS
+                </a>
+            </div>
+            <div class = "headeroption">
+                <a href = "/movies">
+                    MOVIES
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block body %}
+    {% endblock %}
+
+        <div class = "footer1">
+            By Dragan
+        </div>
+
+<script type = "text/javascript" src = "{{ url_for('static', filename = '/js/base.js') }}">></script>
+</body>
+</html>

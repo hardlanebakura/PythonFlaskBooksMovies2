@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class = "booksmenu">
+    <div class = "category">
+    <a href = "/topbooks">TOP BOOKS</a>
+    </div>
+    <div class = "category">
+    <a href = "/categories">CATEGORIES</a>
+    </div>
+    <div class = "category">
+    <a href = "/popularauthors">POPULAR AUTHORS</a>
+    </div>
+    <div class = "category">
+    <a href = "/bookswordcloud">WORDCLOUD</a>
+    </div>
+</div>
+<div class = "chosencategory">
+    POPULAR AUTHORS
+</div>
+
+<div class = "popularwriters">
+{% for author in popularauthors %}
+<a href = "/books/author/{{ author }}">
+    <div class = "popularauthor">
+    {{ author }} <br>
+    </div>
+</a>
+{% endfor %}
+</div>
+
+<script src = "{{ url_for('static', filename = '/js/popularauthors.js') }}"></script>
+
+{% endblock %}

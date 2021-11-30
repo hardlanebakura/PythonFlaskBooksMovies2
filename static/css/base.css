@@ -1,0 +1,170 @@
+@charset "UTF-8";
+body {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Roboto",sans-serif;
+}
+
+.header1 {
+  height:110px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.header1menu {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.headeroption { margin-inline:14px; }
+
+.booksmenu {
+  height:40px;
+  margin-top:1%;
+  background-color:#008575;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.bookrow {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  margin-top:4%;
+  margin-left:14%;
+  margin-right:14%;
+}
+
+.imagezoom {
+  width:340px;
+  overflow:hidden;
+}
+
+.imagezoom img {
+  height:490px;
+  width:340px;
+  transition:transform 0.4s ease;
+  transform-origin:50% 50%;
+}
+
+.imagezoom img:hover { transform:scale(1.2); }
+
+.book {
+  width:370px;
+  min-width:140px;
+  text-align:justify;
+  margin-inline:40px;
+}
+
+.chosencategory {
+  margin-top:4%;
+  text-align:center;
+}
+
+.categoriesselection {
+  margin-top:4%;
+  text-align:center;
+}
+
+.booktitle {
+  font-weight:600;
+  color:#008575;
+  height:2.25rem;
+  overflow:hidden;
+  font-size:.9rem;
+}
+
+.booktitle a {
+  color:#fff;
+  text-decoration:none;
+}
+
+.bookinfo { width:340px; }
+
+.category {
+  margin-inline:14px;
+  background-color:#008575;
+}
+
+.bookauthor:hover { color:#008575; }
+
+a {
+  color:#000;
+  text-decoration:none;
+}
+
+.button1 {
+  height:40px;
+  width:170px;
+  margin:14px;
+  font-weight:bold;
+  color:#fff;
+  background-color:#0396fd;
+}
+
+.logobooks { width:400px; }
+
+.logobooks img { width:400px; }
+
+.logomovies {
+  height:40px;
+  width:400px;
+}
+
+.logomovies img {
+  height:98px;
+  width:180px;
+  margin-top:-40px;
+}
+
+.movierow {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  margin-top:4%;
+  margin-left:14%;
+  margin-right:14%;
+}
+
+.imgwordcloud {
+  display:flex;
+  justify-content:center;
+}
+
+.bookreviewlink a {
+  color:#008575;
+  text-decoration:none;
+}
+
+.author {
+  width:340px;
+  margin-top:4%;
+  padding-left:3%;
+}
+
+.popularwriters {
+  margin-top:4%;
+  margin-left:3%;
+}
+
+.popularauthor {
+  height:40px;
+  display:flex;
+  overflow:hidden;
+}
+
+.popularauthor:hover { color:#008575; }
+
+.footer1 {
+  height:140px;
+  width:100%;
+  margin-top:4%;
+  background-color:#008575;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}

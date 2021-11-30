@@ -1,0 +1,43 @@
+@charset "UTF-8";
+.movierating { display:flex; }
+
+.movierating img {
+  height:26px;
+  width:26px;
+}
+
+.movievote { margin-top:5px; }
+
+.movietitle {
+  font-weight:600;
+  color:#0073b1;
+  overflow:hidden;
+  font-size:1.3rem;
+  height:fit-content;
+}
+
+.movietitle a {
+  color:#fff;
+  text-decoration:none;
+}
+
+.moviesmenu {
+  height:40px;
+  margin-top:1%;
+  background-color:#0073b1;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.genre { margin-inline:14px; }
+
+.footer1 { background-color:#0073b1; }
+
+.movie {
+  width:370px;
+  min-width:140px;
+  text-align:justify;
+  margin-inline:40px;
+}

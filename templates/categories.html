@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<script>
+    var books_genres = {{ books_genres|tojson }}
+    var randomcategory = {{ randomcategory|tojson }}
+    var books = {{ books|tojson }}
+    var all_books = {{ all_books|tojson }}
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class = "booksmenu">
+    <div class = "category">
+    <a href = "/topbooks">TOP BOOKS</a>
+    </div>
+    <div class = "category">
+    <a href = "/categories">CATEGORIES</a>
+    </div>
+    <div class = "category">
+    <a href = "/popularauthors">POPULAR AUTHORS</a>
+    </div>
+    <div class = "category">
+    <a href = "/bookswordcloud">WORDCLOUD</a>
+    </div>
+</div>
+
+<div class = "categoriesselection">
+    Select a category:
+    <form action = "/categories" method = "POST">
+    <select id = "categories" name = "categories">
+        {% for genre in books_genres %}
+            {% if genre == randomcategory %}
+            <option value = "{{ genre}}" selected>{{ genre }}</option>
+            {% else %}
+            <option value = "{{ genre }}">{{ genre }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <br>
+    <button name = "button1" class = "button1">SELECT GENRE</button>
+    </form>
+</div>
+<div class = "chosencategory">
+    OUR TOP CATEGORY FOR TODAY - {{ randomcategory }}
+</div>
+<div class = "categoriesselection">
+    MOST POPULAR BOOKS THIS WEEK
+</div>
+<div class = "bookrow">
+{% for book in books %}
+        <div class = "book">
+            <a href = "/books/{{ book.rank }}">
+            <div class = "imagezoom">
+            <img src = "{{ book.book_image }}"> <br>
+            </div>
+            <div class = "bookinfo">
+            <div class = "booktitle">
+            {{ book.title }} <br>
+            </div>
+            {{ book.author }} <br>
+            {% if book.book_review_link %}
+                <div class = "bookreviewlink">
+                    <a href = "{{ book.book_review_link }}">
+                        {{ book.book_review_link }}
+                    </a>
+                    <br>
+                </div>
+            {% endif %}
+            {{ book.description }} <br>
+            </div>
+            </a>
+        </div>
+{% endfor %}
+</div>
+
+{% endblock %}

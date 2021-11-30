@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class = "book">
+    {{ randomcategory }}
+    <div class = "imagezoom">
+            <img src = "{{ book.book_image }}"> <br>
+    </div>
+    <div class = "booktitle">
+            {{ book.title }} <br>
+    </div>
+    <div class = "bookauthor">
+    <a href = "/books/author/{{ book.author }}"> {{ book.author }} </a><br>
+    </div>
+    {% if book.book_review_link %}
+        <div class = "bookreviewlink">
+            <a href = "{{ book.book_review_link }}">
+                {{ book.book_review_link }}
+            </a>
+            <br>
+        </div>
+
+    {% endif %}
+    {{ book.description }} <br>
+</div>
+
+<script src = "../static/js/book.js"></script>
+
+{% endblock %}

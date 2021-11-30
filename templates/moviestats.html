@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel = "stylesheet" href = "{{ url_for('static', filename = '/css/movies.css') }}">
+
+<script>
+
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class = "moviesmenu">
+    <div class = "genre">
+    <a href = "/topbooks">TOP MOVIES</a>
+    </div>
+    <div class = "genre">
+    <a href = "/genres">GENRES</a>
+    </div>
+    <div class = "genre">
+    <a href = "/movieswordcloud">WORDCLOUD</a>
+    </div>
+    <div class = "genre">
+    <a href = "/movies/stats">STATS</a>
+    </div>
+</div>
+
+<div class = "chosencategory">
+    MOVIE STATISTICS
+</div>
+
+<div class = "chosencategory">
+    MOVIES BY LANGUAGE
+</div>
+
+<div class = "imgwordcloud">
+<img src = "{{ url_for('static', filename = '/images/chartformovielanguages.png') }}">
+</div>
+
+<div class = "chosencategory">
+    MOVIES BY GENRES
+</div>
+
+<div class = "imgwordcloud">
+<img src = "{{ url_for('static', filename = '/images/chartformoviegenres.png') }}">
+</div>
+
+{% endblock %}

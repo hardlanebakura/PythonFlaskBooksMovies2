@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel = "stylesheet" href = "{{ url_for('static', filename = '/css/movies.css') }}">
+
+<script>
+    var books_genres = {{ books_genres|tojson }}
+    var movies_genres = {{ movies_genres|tojson }}
+    var randomgenre = {{ randomgenre|tojson }}
+    var all_books = {{ all_books|tojson }}
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class = "moviesmenu">
+    <div class = "genre">
+    <a href = "/topbooks">TOP MOVIES</a>
+    </div>
+    <div class = "genre">
+    <a href = "/genres">GENRES</a>
+    </div>
+    <div class = "genre">
+    <a href = "/movieswordcloud">WORDCLOUD</a>
+    </div>
+</div>
+
+<div class = "categoriesselection">
+    Select a genre:
+    <form action = "/genres" method = "POST">
+    <select id = "categories" name = "categories">
+        {% for genre in movies_genres %}
+            {% if genre == randomgenre %}
+            <option value = "{{ genre}}" selected>{{ genre }}</option>
+            {% else %}
+            <option value = "{{ genre }}">{{ genre }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+    <br>
+    <button name = "button1" class = "button1">SELECT GENRE</button>
+    </form>
+    <br>
+</div>
+<div class = "chosencategory">
+    {{ randomgenre }}
+</div>
+<div class = "movierow">
+{% for movie in movies %}
+<div class = "movie">
+    <a href = "/movies/{{ movie.rank }}">
+    <div class = "imagezoom">
+            <img src = "https://image.tmdb.org/t/p/original{{ movie.poster_path }}"> <br>
+    </div>
+    <div class = "movietitle">
+    {{ movie.title }} <br>
+    </div>
+    <div class = "movierating">
+        <img src = "{{ url_for('static', filename = '/images/star.jpg') }}">
+        <div class = "movievote">
+            {{ movie.vote_average }} <br>
+        </div>
+    </div>
+    {{ movie.overview }} <br>
+    {% for genre in movie.genres %}
+    <div class = "moviegenre">
+    {{ genre }},
+    </div>
+    </a>
+    {% endfor %}
+</div>
+{% endfor %}
+</div>
+
+<script src = "{{ url_for('static', filename = '/js/movies.js') }}"></script>
+
+{% endblock %}

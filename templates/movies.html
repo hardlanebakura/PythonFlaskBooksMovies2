@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel = "stylesheet" href = "{{ url_for('static', filename = '/css/movies.css') }}">
+
+<script>
+    var movies = {{ movies|tojson }}
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class = "moviesmenu">
+    <div class = "genre">
+    <a href = "/topbooks">TOP MOVIES</a>
+    </div>
+    <div class = "genre">
+    <a href = "/genres">GENRES</a>
+    </div>
+    <div class = "genre">
+    <a href = "/movieswordcloud">WORDCLOUD</a>
+    </div>
+    <div class = "genre">
+    <a href = "/movies/stats">STATS</a>
+    </div>
+</div>
+
+<div class = "chosencategory">
+    OUR TOP GENRE FOR TODAY - {{ randomgenre }}
+</div>
+
+<div class = "movierow">
+{% for movie in movies %}
+<div class = "movie">
+    <a href = "/movies/{{ movie.rank }}">
+    <div class = "imagezoom">
+            <img src = "https://image.tmdb.org/t/p/original{{ movie.poster_path }}"> <br>
+    </div>
+    <div class = "movietitle">
+    {{ movie.title }} <br>
+    </div>
+    <div class = "movierating">
+        <img src = "{{ url_for('static', filename = '/images/star.jpg') }}">
+        <div class = "movievote">
+            {{ movie.vote_average }} <br>
+        </div>
+    </div>
+    {{ movie.release_date }} <br>
+    {% for genre in movie.genres %}
+    <div class = "moviegenre">
+    {{ genre }},
+    </div>
+    </a>
+    {% endfor %}
+</div>
+{% endfor %}
+</div>
+
+<script src = "{{ url_for('static', filename = '/js/movies.js') }}"></script>
+
+{% endblock %}

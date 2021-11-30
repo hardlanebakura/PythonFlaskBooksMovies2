@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<link rel = "stylesheet" href = "../static/css/base.css">
+
+{% endblock %}
+
+{% block body %}
+
+<div class = "author">
+{{ books[0].author }} <br>
+</div>
+{% for book in books %}
+<div class = "book">
+            <a href = "/books/{{ author }}/{{book.id }}">
+            <div class = "imagezoom">
+            <img src = "{{ book.book_image }}"> <br>
+            </div>
+            </a>
+            <div class = "bookinfo">
+            <div class = "booktitle">
+            {{ book.title }} <br>
+            </div>
+            {% if book.book_review_link %}
+                <div class = "bookreviewlink">
+                    <a href = "{{ book.book_review_link }}">
+                        {{ book.book_review_link }}
+                    </a>
+                    <br>
+                </div>
+            {% endif %}
+            {{ book.description }} <br>
+            {{ book.list_name }} <br>
+            </div>
+        </div>
+{% endfor %}
+
+{% endblock %}

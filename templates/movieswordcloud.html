@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel = "stylesheet" href = "{{ url_for('static', filename = '/css/movies.css') }}">
+
+{% endblock %}
+
+{% block body %}
+
+<div class = "moviesmenu">
+    <div class = "genre">
+    <a href = "/topbooks">TOP MOVIES</a>
+    </div>
+    <div class = "genre">
+    <a href = "/genres">GENRES</a>
+    </div>
+    <div class = "genre">
+    <a href = "/movieswordcloud">WORDCLOUD</a>
+    </div>
+    <div class = "genre">
+    <a href = "/movies/stats">STATS</a>
+    </div>
+</div>
+
+<div class = "chosencategory">
+    WORDCLOUD
+</div>
+
+<div class = "imgwordcloud">
+<img src = "{{ url_for('static', filename = '/images/wordcloudformoviestitles.png') }}">
+</div>
+
+{% endblock %}
