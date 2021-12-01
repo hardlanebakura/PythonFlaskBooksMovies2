@@ -12,13 +12,13 @@
 
 <div class = "booksmenu">
     <div class = "category">
-    <a href = "/topbooks">TOP BOOKS</a>
+    <a href = "/books/topbooks">TOP BOOKS</a>
     </div>
     <div class = "category">
-    <a href = "/categories">CATEGORIES</a>
+    <a href = "/books/categories">CATEGORIES</a>
     </div>
     <div class = "category">
-    <a href = "/popularauthors">POPULAR AUTHORS</a>
+    <a href = "/books/popularauthors">POPULAR AUTHORS</a>
     </div>
     <div class = "category">
     <a href = "/books/wordcloud">WORDCLOUD</a>
@@ -31,7 +31,7 @@
 <div class = "bookrow">
 {% for book in books %}
         <div class = "book">
-            <a href = "/topbooks/{{ book.id }}">
+            <a href = "/topbooks/{{ book.top_book_id }}">
             <div class = "imagezoom">
             <img src = "{{ book.image }}"> <br>
             </div>

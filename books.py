@@ -56,6 +56,9 @@ class Book:
         if (self.rank < 1):
             raise ValueError("Rank must be positive number")
 
+    def addTopBookId(self, top_book_id):
+        self.top_book_id = top_book_id
+
     def __repr__(self):
         r = dict(self.__dict__)
         del r["new_id"]
@@ -158,22 +161,28 @@ popularauthors = getPopularAuthors()
 
 def getAllRankOneBestsellers():
     #rankonebestsellers1 = [i for i in col.find({"rank":1}, {"_id":0})]
-    rankonebestsellers1 = [Book(item) for item in Database.findAll("books1", {"rank": 1})]
+    rankonebestsellers1 = [Book(item).__dict__ for item in Database.findAll("books1", {"rank": 1})]
     #some bestsellers appear in multipre genres, need to filter them out
-    rankonetitles1 = [book.title for book in rankonebestsellers1]
+    rankonetitles1 = [book["title"] for book in rankonebestsellers1]
     rankonetitles = []
     for title in rankonetitles1:
         if title not in rankonetitles:
-            rankonetitles.append(i)
+            rankonetitles.append(title)
     rankonebestsellers = []
     #this variable is needed in order to render the "TOP BOOKS" page
     counter = 0
-    #for title in rankonetitles:
-        #list1 = [Book(item) for item in Database.findAll("books1", {"rank":1,"title":title})]
+    print(rankonetitles)
+    #print(rankonebestsellers1)
+    for title in rankonetitles:
+        Book1 = Book(Database.find("books1", {"rank":1,"title":title}))
+        print(Book1)
+        j = counter + 1
+        Book1.addTopBookId(j)
         #list1[0].id = counter + 1
-        #counter = counter + 1
-        #rankonebestsellers.append(list1[0])
-    return rankonebestsellers1
+        counter = counter + 1
+        rankonebestsellers.append(Book1)
+    print(rankonebestsellers)
+    return rankonebestsellers
 
 rankonebestsellers = getAllRankOneBestsellers()
 

@@ -4,13 +4,13 @@
 
 <div class = "booksmenu">
     <div class = "category">
-    <a href = "/topbooks">TOP BOOKS</a>
+    <a href = "/books/topbooks">TOP BOOKS</a>
     </div>
     <div class = "category">
-    <a href = "/categories">CATEGORIES</a>
+    <a href = "/books/categories">CATEGORIES</a>
     </div>
     <div class = "category">
-    <a href = "/popularauthors">POPULAR AUTHORS</a>
+    <a href = "/books/popularauthors">POPULAR AUTHORS</a>
     </div>
     <div class = "category">
     <a href = "/books/wordcloud">WORDCLOUD</a>
@@ -25,6 +25,7 @@
     </div>
     <div class = "booktitle">
             {{ book.title }} <br>
+            {{ book._id}}
             </div>
     <div class = "bookauthor">
     <a href = "/books/author/{{ book.author }}"> {{ book.author }} </a><br>

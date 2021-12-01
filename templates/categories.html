@@ -15,13 +15,13 @@
 
 <div class = "booksmenu">
     <div class = "category">
-    <a href = "/topbooks">TOP BOOKS</a>
+    <a href = "/books/topbooks">TOP BOOKS</a>
     </div>
     <div class = "category">
-    <a href = "/categories">CATEGORIES</a>
+    <a href = "/books/categories">CATEGORIES</a>
     </div>
     <div class = "category">
-    <a href = "/popularauthors">POPULAR AUTHORS</a>
+    <a href = "/books/popularauthors">POPULAR AUTHORS</a>
     </div>
     <div class = "category">
     <a href = "/books/wordcloud">WORDCLOUD</a>
@@ -30,7 +30,7 @@
 
 <div class = "categoriesselection">
     Select a category:
-    <form action = "/categories" method = "POST">
+    <form action = "/books/categories" method = "POST">
     <select id = "categories" name = "categories">
         {% for genre in books_genres %}
             {% if genre == randomcategory %}
