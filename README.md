@@ -1,0 +1,1 @@
+This project communicates with three different APIs <br> to get the most popular books and movies, sorts them by genres, and has other features such as WordCloud. It has the unit testing and uses MongoDB.
