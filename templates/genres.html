@@ -5,10 +5,8 @@
 <link rel = "stylesheet" href = "{{ url_for('static', filename = '/css/movies.css') }}">
 
 <script>
-    var books_genres = {{ books_genres|tojson }}
     var movies_genres = {{ movies_genres|tojson }}
     var randomgenre = {{ randomgenre|tojson }}
-    var all_books = {{ all_books|tojson }}
 </script>
 
 {% endblock %}
