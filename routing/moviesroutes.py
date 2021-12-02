@@ -6,16 +6,16 @@ listoftopmovies = [i.__dict__ for i in listoftopmovies]
 
 def movies():
     session["genre"] = randomgenre
-    moviesinrandomgenre = [i.__dict__ for i in getTopMoviesByGenre(randomgenre)[:40]]
+    moviesinrandomgenre = [i.__dict__ for i in getTopMoviesByGenre(randomgenre)[:30]]
     return render_template("movies.html", movies = moviesinrandomgenre, randomgenre = randomgenre)
 
 def topmovies():
     session["genre"] = randomgenre
-    moviesinrandomgenre = [i.__dict__ for i in getTopMoviesByGenre(randomgenre)[:40]]
+    moviesinrandomgenre = [i.__dict__ for i in getTopMoviesByGenre(randomgenre)[:30]]
     return render_template("topmovies.html", movies = moviesinrandomgenre, randomgenre = randomgenre)
 
 def topmovie(movieid):
-        movies = [i.__dict__ for i in getTopMoviesByGenre(session["genre"])[:40]]
+        movies = [i.__dict__ for i in getTopMoviesByGenre(session["genre"])[:30]]
         return render_template("movie.html", movie=movies[movieid - 1])
 
 def genres():
@@ -30,13 +30,13 @@ def genres():
         else:
             movies_genres = getAllGenres()
             session["category"] = randomcategory_u
-            movies = [i.__dict__ for i in getTopMoviesByGenre(randomgenre)[:40]]
+            movies = [i.__dict__ for i in getTopMoviesByGenre(randomgenre)[:30]]
             return render_template("genres.html", movies = movies, movies_genres = movies_genres,
                                    randomgenre = randomgenre)
 
 def genre(genreid):
     chosencategory = session["genre"]
-    movies = [i.__dict__ for i in getTopMoviesByGenre(chosencategory)[:40]]
+    movies = [i.__dict__ for i in getTopMoviesByGenre(chosencategory)[:30]]
     return render_template("genre.html", all_movies = listoftopmovies, movies = movies, movies_genres = listofallgenres,
                            randomgenre = chosencategory)
 
@@ -44,7 +44,7 @@ def movieswordcloud():
     return render_template("movieswordcloud.html")
 
 def movie(movieid):
-    movies = [i.__dict__ for i in getTopMoviesByGenre(session["genre"])[:40]]
+    movies = [i.__dict__ for i in getTopMoviesByGenre(session["genre"])[:30]]
     return render_template("movie.html", movie = movies[movieid-1])
 
 def moviestats():
